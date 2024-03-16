@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="pageblocks" baseClass="xPDOObject" platform="mysql" defaultEngine="InnoDB" phpdoc-package="pageblocks" version="1.1">
+
+    <object class="pbBlock" table="pb_blocks" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="chunk" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="ab_templates" dbtype="varchar" precision="255" phptype="string" null="true" default=""/>
+        <field key="ab_parents" dbtype="varchar" precision="255" phptype="string" null="true" default=""/>
+        <field key="ab_resources" dbtype="varchar" precision="255" phptype="string" null="true" default=""/>
+        <field key="menuindex" dbtype="smallint" precision="10" phptype="integer" attributes="unsigned" null="false" default="0"/>
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="boolean" null="false" default="1" index="index" />
+
+        <index alias="menuindex" name="menuindex" primary="false" unique="false" type="BTREE">
+            <column key="menuindex" length="" collation="A" null="false"/>
+        </index>
+
+        <index alias="published" name="published" primary="false" unique="false" type="BTREE">
+            <column key="published" length="" collation="A" null="false"/>
+        </index>
+
+        <composite alias="Fields" class="pbField" local="id" foreign="model_id" cardinality="many" owner="local">
+            <criteria target="foreign"><![CDATA[
+                {"model_type":"pbBlock"}
+            ]]></criteria>
+        </composite>
+        <composite alias="Tabs" class="pbFieldTab" local="id" foreign="model_id" cardinality="many" owner="local">
+            <criteria target="foreign"><![CDATA[
+                {"model_type":"pbBlock"}
+            ]]></criteria>
+        </composite>
+    </object>
+
+    <object class="pbFieldTab" table="pb_field_tabs" extends="xPDOSimpleObject">
+        <field key="model_type" dbtype="varchar" precision="100" phptype="string" null="false" default="pbBlock"/>
+        <field key="model_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="true" default="0"/>
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="menuindex" dbtype="smallint" precision="10" phptype="integer" attributes="unsigned" null="false" default="0"/>
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="boolean" null="false" default="1"/>
+
+        <composite alias="Fields" class="pbField" local="id" foreign="tab_id" cardinality="many" owner="local"/>
+    </object>
+
+    <object class="pbField" table="pb_fields" extends="xPDOSimpleObject">
+        <field key="model_type" dbtype="varchar" precision="100" phptype="string" null="false" default="pbBlock"/>
+        <field key="model_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="true" default="0"/>
+        <field key="type" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="tab_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="true" default="0"/>
+        <field key="caption" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="default" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="width" dbtype="tinyint" precision="10" phptype="integer" attributes="unsigned" null="true" default="0"/>
+        <field key="help" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="properties" dbtype="text" phptype="string" null="true" default=""/>
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="boolean" null="false" default="1" index="index" />
+        <field key="required" dbtype="tinyint" precision="1" attributes="unsigned" phptype="boolean" null="true" default="1"/>
+        <field key="menuindex" dbtype="smallint" precision="10" phptype="integer" null="false" default="0" />
+
+        <index alias="model_type" name="model_type" primary="false" unique="false" type="BTREE">
+            <column key="model_type" length="" collation="A" null="false"/>
+        </index>
+        <index alias="model_id" name="model_id" primary="false" unique="false" type="BTREE">
+            <column key="model_id" length="" collation="A" null="false"/>
+        </index>
+        <index alias="menuindex" name="menuindex" primary="false" unique="false" type="BTREE">
+            <column key="menuindex" length="" collation="A" null="false"/>
+        </index>
+        <index alias="published" name="published" primary="false" unique="false" type="BTREE">
+            <column key="published" length="" collation="A" null="false"/>
+        </index>
+
+        <aggregate alias="Tab" class="pbFieldTab" local="tab_id" foreign="id" cardinality="one" owner="foreign"/>
+    </object>
+
+    <object class="pbTable" table="pb_tables" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="menuindex" dbtype="smallint" precision="10" attributes="unsigned" phptype="integer" null="false" default="0"/>
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="boolean" null="false" default="1" index="index" />
+
+        <index alias="published" name="published" primary="false" unique="false" type="BTREE">
+            <column key="published" length="" collation="A" null="false"/>
+        </index>
+
+        <composite alias="Fields" class="pbField" local="id" foreign="model_id" cardinality="many" owner="local">
+            <criteria target="foreign"><![CDATA[
+                {"model_type":"pbTable"}
+            ]]></criteria>
+        </composite>
+        <composite alias="Tabs" class="pbFieldTab" local="id" foreign="model_id" cardinality="many" owner="local">
+            <criteria target="foreign"><![CDATA[
+                {"model_type":"pbTable"}
+            ]]></criteria>
+        </composite>
+        <composite alias="Columns" class="pbTableColumn" local="id" foreign="model_id" cardinality="many" owner="local">
+            <criteria target="foreign"><![CDATA[
+                {"model_type":"pbTable"}
+            ]]></criteria>
+        </composite>
+    </object>
+
+    <object class="pbTableColumn" table="pb_table_columns" extends="xPDOSimpleObject">
+        <field key="model_type" dbtype="varchar" precision="100" phptype="string" null="false" default="pbTable"/>
+        <field key="model_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="true" default="0"/>
+        <field key="field_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="true" default="0"/>
+        <field key="width" dbtype="smallint" precision="10" phptype="integer" attributes="unsigned" null="true" default="100"/>
+        <field key="render" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="menuindex" dbtype="smallint" precision="10" phptype="integer" attributes="unsigned" null="false" default="0"/>
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="boolean" null="false" default="1" index="index" />
+
+        <index alias="model_type" name="model_type" primary="false" unique="false" type="BTREE">
+            <column key="model_type" length="" collation="A" null="false"/>
+        </index>
+        <index alias="model_id" name="model_id" primary="false" unique="false" type="BTREE">
+            <column key="model_id" length="" collation="A" null="false"/>
+        </index>
+        <index alias="menuindex" name="menuindex" primary="false" unique="false" type="BTREE">
+            <column key="menuindex" length="" collation="A" null="false"/>
+        </index>
+        <index alias="published" name="published" primary="false" unique="false" type="BTREE">
+            <column key="published" length="" collation="A" null="false"/>
+        </index>
+
+        <aggregate alias="Field" class="pbField" local="field_id" foreign="id" cardinality="one" owner="foreign"/>
+    </object>
+
+    <object class="pbBlockValue" table="pb_block_values" extends="xPDOSimpleObject">
+        <field key="model_type" dbtype="varchar" precision="100" phptype="string" null="false" default="modDocument"/>
+        <field key="model_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="true" default="0"/>
+        <field key="context_key" dbtype="varchar" precision="191" phptype="string" null="false" default="web"/>
+        <field key="constructor_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="true" default="0"/>
+        <field key="chunk" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="values" dbtype="mediumtext" phptype="string" null="true" default=""/>
+        <field key="menuindex" dbtype="smallint" precision="10" phptype="integer" null="false" default="0" index="index" />
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="boolean" null="false" default="1" index="index" />
+        <field key="publishedon" dbtype="int" precision="20" phptype="timestamp" null="false" default="0" />
+        <field key="publishedby" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+        <field key="createdby" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+        <field key="createdon" dbtype="int" precision="20" phptype="timestamp" null="false" default="0" />
+        <field key="editedby" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+        <field key="editedon" dbtype="int" precision="20" phptype="timestamp" null="false" default="0" />
+        <field key="deleted" dbtype="tinyint" precision="1" attributes="unsigned" phptype="boolean" null="false" default="0" />
+        <field key="deletedon" dbtype="int" precision="20" phptype="timestamp" null="false" default="0" />
+        <field key="deletedby" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+
+        <index alias="model_type" name="model_type" primary="false" unique="false" type="BTREE">
+            <column key="model_type" length="" collation="A" null="false"/>
+        </index>
+        <index alias="model_id" name="model_id" primary="false" unique="false" type="BTREE">
+            <column key="model_id" length="" collation="A" null="false"/>
+        </index>
+        <index alias="context_key" name="context_key" primary="false" unique="false" type="BTREE">
+            <column key="context_key" length="" collation="A" null="false"/>
+        </index>
+        <index alias="constructor_id" name="constructor_id" primary="false" unique="false" type="BTREE">
+            <column key="constructor_id" length="" collation="A" null="false"/>
+        </index>
+        <index alias="menuindex" name="menuindex" primary="false" unique="false" type="BTREE">
+            <column key="menuindex" length="" collation="A" null="false"/>
+        </index>
+        <index alias="published" name="published" primary="false" unique="false" type="BTREE">
+            <column key="published" length="" collation="A" null="false"/>
+        </index>
+        <index alias="deleted" name="deleted" primary="false" unique="false" type="BTREE">
+            <column key="deleted" length="" collation="A" null="false"/>
+        </index>
+
+        <aggregate alias="Constructor" class="pbBlock" local="constructor_id" foreign="id" cardinality="one" owner="foreign"/>
+        <aggregate alias="Fields" class="pbField" local="constructor_id" foreign="model_id" cardinality="many" owner="foreign">
+            <criteria target="foreign"><![CDATA[
+                {"model_type":"pbBlock"}
+            ]]></criteria>
+        </aggregate>
+    </object>
+
+    <object class="pbTableValue" table="pb_table_values" extends="xPDOSimpleObject">
+        <field key="model_type" dbtype="varchar" precision="100" phptype="string" null="false" default="pbBlock"/>
+        <field key="model_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="true" default="0"/>
+        <field key="context_key" dbtype="varchar" precision="191" phptype="string" null="false" default="web"/>
+        <field key="constructor_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="true" default="0"/>
+        <field key="collection_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0"/>
+        <field key="field_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0"/>
+        <field key="values" dbtype="mediumtext" phptype="string" null="true" default=""/>
+        <field key="menuindex" dbtype="smallint" precision="10" phptype="integer" attributes="unsigned" null="false" default="0"/>
+        <field key="alias" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="boolean" null="false" default="1" index="index" />
+        <field key="publishedon" dbtype="int" precision="20" phptype="timestamp" null="false" default="0" />
+        <field key="publishedby" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+        <field key="createdby" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+        <field key="createdon" dbtype="int" precision="20" phptype="timestamp" null="false" default="0" />
+        <field key="editedby" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+        <field key="editedon" dbtype="int" precision="20" phptype="timestamp" null="false" default="0" />
+        <field key="deleted" dbtype="tinyint" precision="1" attributes="unsigned" phptype="boolean" null="false" default="0" />
+        <field key="deletedon" dbtype="int" precision="20" phptype="timestamp" null="false" default="0" />
+        <field key="deletedby" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+
+        <index alias="model_type" name="model_type" primary="false" unique="false" type="BTREE">
+            <column key="model_type" length="" collation="A" null="false"/>
+        </index>
+        <index alias="model_id" name="model_id" primary="false" unique="false" type="BTREE">
+            <column key="model_id" length="" collation="A" null="false"/>
+        </index>
+        <index alias="context_key" name="context_key" primary="false" unique="false" type="BTREE">
+            <column key="context_key" length="" collation="A" null="false"/>
+        </index>
+        <index alias="constructor_id" name="constructor_id" primary="false" unique="false" type="BTREE">
+            <column key="constructor_id" length="" collation="A" null="false"/>
+        </index>
+        <index alias="collection_id" name="collection_id" primary="false" unique="false" type="BTREE">
+            <column key="collection_id" length="" collation="A" null="false"/>
+        </index>
+        <index alias="field_id" name="field_id" primary="false" unique="false" type="BTREE">
+            <column key="field_id" length="" collation="A" null="false"/>
+        </index>
+        <index alias="menuindex" name="menuindex" primary="false" unique="false" type="BTREE">
+            <column key="menuindex" length="" collation="A" null="false"/>
+        </index>
+        <index alias="published" name="published" primary="false" unique="false" type="BTREE">
+            <column key="published" length="" collation="A" null="false"/>
+        </index>
+        <index alias="deleted" name="deleted" primary="false" unique="false" type="BTREE">
+            <column key="deleted" length="" collation="A" null="false"/>
+        </index>
+
+        <aggregate alias="Constructor" class="pbTable" local="constructor_id" foreign="id" cardinality="one" owner="foreign"/>
+        <aggregate alias="Fields" class="pbField" local="constructor_id" foreign="model_id" cardinality="many" owner="foreign">
+            <criteria target="foreign"><![CDATA[
+                {"model_type":"pbTable"}
+            ]]></criteria>
+        </aggregate>
+    </object>
+
+</model>

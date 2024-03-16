@@ -1,0 +1,62 @@
+<?php
+
+$_lang['pb_field_type_textfield'] = 'Text';
+$_lang['pb_field_type_textarea'] = 'Textarea';
+$_lang['pb_field_type_richtext'] = 'Text-Editor';
+$_lang['pb_field_type_texteditor'] = 'ACE';
+$_lang['pb_field_type_listbox'] = 'Wählen Sie';
+$_lang['pb_field_type_listbox_multiple'] = 'MultiSelekt';
+$_lang['pb_field_type_resourcelist'] = 'Ressourcenliste';
+$_lang['pb_field_type_readyblocks'] = 'Fertige Blöcke';
+$_lang['pb_field_type_combo_boolean'] = 'Liste Ja/Nein';
+$_lang['pb_field_type_numberfield'] = 'Nummernfeld';
+$_lang['pb_field_type_xcheckbox'] = 'Kontrollkästchen';
+$_lang['pb_field_type_checkboxgroup'] = 'Checkbox-Gruppe';
+$_lang['pb_field_type_radiogroup'] = 'Radio-Optionen';
+$_lang['pb_field_type_file'] = 'Datei';
+$_lang['pb_field_type_image'] = 'Bildfeld';
+$_lang['pb_field_type_gallery'] = 'Galerie Feld';
+$_lang['pb_field_type_video'] = 'Video Feld';
+$_lang['pb_field_type_button'] = 'Taste';
+$_lang['pb_field_type_xdatetime'] = 'das Datum';
+$_lang['pb_field_type_timefield'] = 'Zeit';
+$_lang['pb_field_type_table'] = 'Tabelle';
+$_lang['pb_field_type_colorpalette'] = 'Farbpalette';
+$_lang['pb_field_type_readonly'] = 'Nur lesen';
+$_lang['pb_field_type_hidden'] = 'Verborgenes Feld';
+$_lang['pb_field_type_xtype'] = 'Xtype-Feld';
+
+$_lang['pb_fields'] = 'Felder';
+$_lang['pb_field'] = 'Bereich';
+$_lang['pb_field_id'] = 'ID';
+$_lang['pb_field_caption'] = 'Unterschrift';
+$_lang['pb_field_title'] = 'Titel';
+$_lang['pb_field_name'] = 'Name';
+$_lang['pb_field_name_desc'] = 'Es sind nur lateinische Kleinbuchstaben erlaubt';
+$_lang['pb_field_type'] = 'Feldtyp';
+$_lang['pb_field_source_path'] = 'Dateipfad';
+$_lang['pb_field_source_path_desc'] = 'Annehmbare Parameter: [[+resource_id]] und [[+id]]';
+$_lang['pb_field_alias'] = 'Alias';
+$_lang['pb_field_width'] = 'Feldbreite';
+$_lang['pb_field_width_desc'] = '0 bis 100';
+$_lang['pb_field_values'] = 'Mögliche Werte';
+$_lang['pb_field_values_desc'] = 'Optionen getrennt durch ||, z.B. Katze||Hund oder Weiß==#ffffff||Schwarz==#000000';
+$_lang['pb_field_xtype'] = 'xtype-Feld';
+$_lang['pb_field_xtype_desc'] = 'Feldliste - https://bobsguides.com/xtype-list.html';
+$_lang['pb_field_default'] = 'Standardwert';
+$_lang['pb_field_help'] = 'Feld Beschreibung';
+$_lang['pb_field_required'] = 'Pflichtfeld';
+$_lang['pb_field_sort'] = 'Feld sortieren';
+$_lang['pb_field_dir'] = 'Sortierrichtung';
+$_lang['pb_field_limit'] = 'Grenze';
+$_lang['pb_field_processor'] = 'Prozessor';
+$_lang['pb_field_connector'] = 'Connector-URL';
+$_lang['pb_field_time_minvalue'] = 'Min. Zeit';
+$_lang['pb_field_time_maxvalue'] = 'Max. Zeit';
+$_lang['pb_field_time_increment'] = 'Zeitinkrement';
+$_lang['pb_field_position'] = 'Position';
+$_lang['pb_field_table'] = 'Tabelle';
+$_lang['pb_field_where_desc'] = 'JSON-Objekt mit Bedingungen zum Filtern einer Abfrage.
+Beispiele: [{"template:=":"4"}], [{"pagetitle:!=":"Home"}], [{"parent:IN":[34,56]}]';
+
+$_lang['pb_combo_empty'] = 'Klicke um auszuwählen';

@@ -1,0 +1,1 @@
+var PageBlocks=function(e){PageBlocks.superclass.constructor.call(this,e=e||{})};Ext.extend(PageBlocks,Ext.Component,{page:{},window:{},grid:{},tree:{},panel:{},combo:{},config:{},view:{},utils:{},form:{}}),Ext.reg("pageblocks",PageBlocks),PageBlocks=new PageBlocks;
