@@ -23,7 +23,7 @@ if (!$pdotools) {
     $pdotools = $modx;
 }
 
-$modelType = $modx->getOption('modelType', $scriptProperties, $modx->resource->_class, true);
+$modelType = $modx->getOption('modelType', $scriptProperties, $modx->resource->class_key, true);
 $classKey = $modx->getOption('classKey', $scriptProperties, 'pbBlockValue', true);
 $tpl = $modx->getOption('tpl', $scriptProperties, '');
 $sortby = $modx->getOption('sortby', $scriptProperties, 'menuindex');
