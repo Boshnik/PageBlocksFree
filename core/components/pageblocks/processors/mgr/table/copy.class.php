@@ -5,8 +5,12 @@ class pbTableCopyProcessor extends modObjectGetProcessor
     public $objectType = 'pb_object';
     public $classKey = pbTable::class;
     public $languageTopics = ['pageblocks:default'];
-    //public $permission = 'view';
 
+    public $composites = [
+        'Tabs' => pbFieldTab::class,
+        'Fields' => pbField::class,
+        'Columns' => pbTableColumn::class,
+    ];
 
     public function cleanup() {
 
@@ -18,22 +22,52 @@ class pbTableCopyProcessor extends modObjectGetProcessor
         $newObject->fromArray($array, '', false, true);
         if (!$newObject->save()) $this->failure('',$array);
 
-        $tables = [
-            'Fields' => pbField::class,
-            'Columns' => pbTableColumn::class,
-        ];
-
-        foreach ($tables as $alias => $className) {
+        foreach ($this->composites as $alias => $className) {
             $rows = $this->object->getMany($alias);
             foreach ($rows as $row) {
                 $newRow = $this->modx->newObject($className);
                 $newRow->fromArray($row->toArray(), '', false, true);
                 $newRow->set('model_id', $newObject->id);
-                $newRow->save();
+                if ($newRow->save()) {
+                    if ($alias === 'Fields') {
+                        $this->updateFieldTab($row, $newRow);
+                    }
+                    if ($alias === 'Columns') {
+                        $this->updateColumns($row, $newRow);
+                    }
+                }
             };
         }
 
         return $this->success('',$array);
+    }
+
+    public function updateFieldTab($field, $newField)
+    {
+        if ($field->tab_id) {
+            $newTab = $this->modx->getObject($this->composites['Tabs'], [
+                'model_id' => $newField->model_id,
+                'name' => $field->getTabName()
+            ]);
+
+            if ($newTab) {
+                $newField->set('tab_id', $newTab->id);
+                $newField->save();
+            }
+        }
+    }
+
+    public function updateColumns($column, $newColumn)
+    {
+        $newField = $this->modx->getObject($this->composites['Fields'], [
+            'model_id' => $newColumn->model_id,
+            'name' => $column->getOne('Field')->name
+        ]);
+
+        if ($newField) {
+            $newColumn->set('field_id', $newField->id);
+            $newColumn->save();
+        }
     }
 
 }
