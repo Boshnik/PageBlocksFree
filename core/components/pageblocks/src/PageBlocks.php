@@ -23,36 +23,25 @@ class PageBlocks
     use QueryProcessor;
     use ValuesProcessor;
 
-    /** @var modX $modx */
-    public $modx;
-
     /**
      * The namespace
      * @var string $namespace
      */
-    public $namespace = 'pageblocks';
+    public string $namespace = 'pageblocks';
 
     /**
      * The version
      * @var string $version
      */
-    public $version = '1.0.0-pl';
-
-    /**
-     * The class config
-     * @var array $config
-     */
-    public $config = [];
+    public string $version = '1.0.1-pl';
 
 
     /**
      * @param modX $modx
      * @param array $config
      */
-    function __construct(modX &$modx, array $config = [])
+    function __construct(public modX $modx, public array $config = [])
     {
-        $this->modx =& $modx;
-
         $corePath = MODX_CORE_PATH . 'components/pageblocks/';
         $assetsUrl = MODX_ASSETS_URL . 'components/pageblocks/';
 

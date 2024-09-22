@@ -8,17 +8,21 @@ class pbBrowserFileUploadProcessor extends modProcessor
     use MediaSourceProcessor;
     use FileProcessor;
 
-    public function process()
+    public function initialize()
     {
         $this->modx->lexicon->load('core:file');
 
+        return parent::initialize();
+    }
+
+    public function process()
+    {
         if (!$this->getSource($this->properties['source'])) {
             return $this->failure($this->modx->lexicon('permission_denied'));
         }
 
         $path = $this->getSourcePath($this->properties['source_path']);
         $dir = rtrim(MODX_BASE_PATH, '/') . $this->source->getBaseUrl() . $path;
-        $this->modx->log(1, print_r($dir,1));
         if (file_exists($dir) === false) {
             $this->source->createContainer($path, '/');
         }

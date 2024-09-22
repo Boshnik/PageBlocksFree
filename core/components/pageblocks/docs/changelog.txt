@@ -1,3 +1,22 @@
-1.0.0-pl
-==============
-- First release
+# Changelog
+
+## [1.0.1-pl] - 2024-09-22
+
+### Added
+ - UK lexicon
+
+### Fixed
+ - Improved display of values in the grid
+ - Fixed sorting of all objects
+ - Fixed PageBlocks snippet
+ - Fixed copying of the constructor table
+ - Fixed 'Field' field in table columns
+
+### Changed
+ - Minimum PHP version requirement updated to 8.1
+
+### Removed
+ - renderResource. Rendering now occurs automatically.
+
+## [1.0.0-pl] - 2024-03-16
+ - First release

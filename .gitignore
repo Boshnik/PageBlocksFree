@@ -1,8 +1,8 @@
 .idea
 .git
 /core/components/pageblocks/vendor/
-_build
-_assets
+/_build/
+/_assets/
 /node_modules/
 gulpfile.js
 package.json
