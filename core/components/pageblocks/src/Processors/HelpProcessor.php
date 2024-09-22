@@ -205,4 +205,19 @@ trait HelpProcessor
 
         return $values;
     }
+
+    public function truncateTextByWords($text, $wordLimit = 20)
+    {
+        if (empty($text) || !is_string($text)) {
+            return $text;
+        }
+        $words = preg_split('/\s+/u', $text, -1, PREG_SPLIT_NO_EMPTY);
+        if (count($words) <= $wordLimit) {
+            return $text;
+        }
+        $truncatedWords = array_slice($words, 0, $wordLimit);
+        $truncatedText = implode(' ', $truncatedWords) . '...';
+
+        return $truncatedText;
+    }
 }

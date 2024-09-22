@@ -70,22 +70,8 @@ class pbBlockValueGetListProcessor extends modObjectGetListProcessor
         }
 
         $array = $object->toArray();
-        $array['values'] = json_decode($array['values'],1);
         $array['block_name'] = $constructor->name;
-
-        // column values
-        $values = '';
-        $fields_lexicon = [];
-        $fields = $constructor->getMany('Fields');
-        foreach ($fields as $field) {
-            $fields_lexicon[$field->name] = $field->caption;
-        }
-        foreach ($array['values'] as $title => $value) {
-            if (!empty($value) && !is_array($value) && isset($fields_lexicon[$title])) {
-                $values .= "<b>{$fields_lexicon[$title]}:</b> $value <br>";
-            }
-        }
-        $array['values'] = $values;
+        $array['values'] = $object->getColumnValues();
         $array['actions'] = [];
 
         // Edit

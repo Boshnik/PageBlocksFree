@@ -4,8 +4,6 @@ class pbTableValueGetListProcessor extends modObjectGetListProcessor
 {
     public $objectType = 'pb_object';
     public $classKey = pbTableValue::class;
-    public $defaultSortField = 'id';
-    public $defaultSortDirection = 'DESC';
     public $idx = 0;
 
     /**
@@ -96,21 +94,14 @@ class pbTableValueGetListProcessor extends modObjectGetListProcessor
             }
         }
 
-        // renderResource
-        $fields = $this->modx->getCollection(pbTableColumn::class, [
-            'model_type' => $array['model_type'],
-            'model_id' => $array['model_id'],
-            'render' => 'renderResource'
-        ]);
+        // getColumnValues
+        $fields = $object->getMany('Fields');
         foreach ($fields as $field) {
-            $name = $field->getOne('Field')->name;
-            $resource_id = $values[$name];
-            $resource = $this->modx->getObject(\modResource::class, $resource_id);
-            if ($resource) {
-                $array[$name] = $resource->pagetitle . " ($resource_id)";
+            $name = $field->name;
+            if (isset($values[$name])) {
+                $array[$name] = $field->formatValue($values[$name]);
             }
         }
-        // end renderResource
 
         if ($this->properties['combo']) {
             return [
