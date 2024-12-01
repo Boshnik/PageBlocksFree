@@ -1,6 +1,9 @@
 --------------------
 PageBlocks
 --------------------
-Author: Aleksandr Huz <Superboshnik@gmail.com>
-Site: https://pageblocks.boshnik.com/
+Author: Aleksandr Huz
+--------------------
+Email: pageblocks@boshnik.com
+--------------------
+Docs: https://pageblocks.boshnik.com/docs/
 --------------------
