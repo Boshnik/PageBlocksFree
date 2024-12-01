@@ -86,13 +86,6 @@ class pbTableValueGetListProcessor extends modObjectGetListProcessor
     {
         $array = $object->toArray();
         $array['idx'] = ++$this->idx;
-        $values = json_decode($array['values'],1);
-        foreach ($values as $name => $value) {
-            $array[$name] = $value;
-            if (is_array($value) && isset($value['url'])) {
-                $array[$name] = $value['url'];
-            }
-        }
 
         // getColumnValues
         $fields = $object->getMany('Fields');
@@ -100,6 +93,16 @@ class pbTableValueGetListProcessor extends modObjectGetListProcessor
             $name = $field->name;
             if (isset($values[$name])) {
                 $array[$name] = $field->formatValue($values[$name]);
+            }
+        }
+
+        $values = json_decode($array['values'],1);
+        foreach ($values as $name => $value) {
+            if (!isset($array[$name])) {
+                $array[$name] = $value;
+                if (is_array($value) && isset($value['url'])) {
+                    $array[$name] = $value['url'];
+                }
             }
         }
 
