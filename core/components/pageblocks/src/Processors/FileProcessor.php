@@ -38,9 +38,8 @@ trait FileProcessor {
         $extension = strtolower($fileInfo->getExtension());
         $filename = $this->getFileName($fileInfo->getFilename());
         $name = str_replace('.'. $extension, '', $filename);
-
         $source_url = $this->source->getBaseUrl();
-        $url = "{$source_url}{$path}{$filename}";
+        $url = str_replace('//', '/', "{$source_url}{$path}{$filename}");
         $url = ltrim($url, '/');
         $fullUrl = MODX_BASE_PATH . $url;
 
