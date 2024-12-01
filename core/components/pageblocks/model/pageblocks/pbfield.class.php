@@ -23,6 +23,8 @@ class pbField extends xPDOSimpleObject
 
         } elseif (is_string($value)) {
             $value = $this->truncateTextByWords($value);
+        } elseif (is_array($value)) {
+            $value = 'Array';
         }
 
         return $value;
