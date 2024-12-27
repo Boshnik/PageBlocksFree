@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.3-pl] - 2024-12-27
+
+### Fixed
+ - Fixed table sorting
+
 ## [1.0.2-pl] - 2024-12-01
 
 ### Fixed
