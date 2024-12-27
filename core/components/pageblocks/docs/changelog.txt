@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2-pl] - 2024-12-01
+
+### Fixed
+ - Fixed upload image
+ - Fixed formatValue
+ - Fixed renderImage
+
 ## [1.0.1-pl] - 2024-09-22
 
 ### Added
