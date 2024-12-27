@@ -22,8 +22,6 @@ class PageBlocksSortProcessor extends modObjectProcessor
 
         $this->where = $this->getCondition();
 
-
-
         return true;
     }
 

@@ -13,7 +13,6 @@ class pbTableValueSortProcessor extends PageBlocksSortProcessor
             'model_id' => $this->target->model_id,
             'context_key' => $this->target->context_key,
             'field_id' => $this->target->field_id,
-            'ef_field_id' => $this->target->ef_field_id,
         ];
     }
 }
