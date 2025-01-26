@@ -23,8 +23,7 @@ trait MediaSourceProcessor {
             foreach ($dirs as $dir) {
                 $newPath .= "$dir/";
                 if ($dir !== '[[+id]]') continue;
-                $oldPath = str_replace('[[+resource_id]]', $object->model_id, $newPath);
-                $oldPath = str_replace('[[+id]]', "temp{$field->id}", $oldPath);
+                $oldPath = str_replace(['[[+resource_id]]', '[[+id]]'], [$object->model_id, "temp{$field->id}"], $newPath);
                 if (!empty($oldPath)) {
                     $mediaSource->renameContainer($oldPath, $object->id);
                 }

@@ -34,14 +34,18 @@ class PageBlocks
      * @var string $version
      */
     public string $version = '1.0.3-pl';
+    public modX $modx;
+    public array $config = [];
 
 
     /**
      * @param modX $modx
      * @param array $config
      */
-    function __construct(public modX $modx, public array $config = [])
+    function __construct(modX $modx, array $config = [])
     {
+        $this->config = $config;
+        $this->modx = $modx;
         $corePath = MODX_CORE_PATH . 'components/pageblocks/';
         $assetsUrl = MODX_ASSETS_URL . 'components/pageblocks/';
 

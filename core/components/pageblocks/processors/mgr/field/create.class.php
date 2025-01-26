@@ -28,7 +28,7 @@ class pbFieldCreateProcessor extends modObjectCreateProcessor
             $this->modx->error->addField('name', $this->modx->lexicon('pb_object_err_ae'));
         }
 
-        if (!preg_match("/^[\w\d\s.,-]*$/", $name)) {
+        if (!preg_match("/^[\w\s.,-]*$/", $name)) {
             $this->modx->error->addField('name', $this->modx->lexicon('pb_object_err_name_cyrillic'));
         }
 

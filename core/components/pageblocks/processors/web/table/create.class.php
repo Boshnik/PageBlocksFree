@@ -36,14 +36,14 @@ class pbTableValueCreateProcessor extends modObjectCreateProcessor
         $this->properties['createdon'] = time();
         $this->properties['createdby'] = $this->modx->user->id;
         $this->properties['menuindex'] = $this->modx->getCount($this->classKey, [
-            'model_type' => (int) $this->properties['model_type'],
-            'model_id' => (int) $this->properties['model_id'] ?? 0,
-            'field_id' => (int) $this->properties['field_id'],
-            'collection_id' => (int) $this->properties['collection_id'] ?: 0,
+            'model_type' => $this->properties['model_type'],
+            'model_id' => $this->properties['model_id'] ?? 0,
+            'field_id' => $this->properties['field_id'],
+            'collection_id' => $this->properties['collection_id'] ?: 0,
         ]);
 
         $block = $this->modx->getObject(pbBlockValue::class, [
-            'model_type' => (int) $this->properties['model_type'],
+            'model_type' => $this->properties['model_type'],
             'id' => $this->properties['model_id']
         ]);
 

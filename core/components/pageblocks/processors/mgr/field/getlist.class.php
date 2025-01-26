@@ -62,8 +62,7 @@ class pbFieldGetListProcessor extends modObjectGetListProcessor
             $array = array_merge($array, $properties);
         }
 
-        $fieldType = str_replace(['pb-panel-', 'pb-', 'modx-'], '', $array['type']);
-        $fieldType = str_replace('-', '_', $fieldType);
+        $fieldType = str_replace(['pb-panel-', 'pb-', 'modx-', '-'], ['', '', '', '_'], $array['type']);
         $array['type_lexicon'] = $this->modx->lexicon('pb_field_type_' . $fieldType);
         if ($array['type'] == 'pb-table' && isset($array['table_id'])) {
             $array['table_columns'] = $this->getTableColumns($array['table_id']);

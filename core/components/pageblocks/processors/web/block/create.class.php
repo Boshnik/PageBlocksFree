@@ -37,7 +37,7 @@ class pbBlockValueCreateProcessor extends modObjectCreateProcessor
         $this->properties['createdby'] = $this->modx->user->id;
         $this->properties['menuindex'] = $this->modx->getCount($this->classKey, [
             'model_type' => $this->properties['model_type'],
-            'model_id' => (int) $this->properties['model_id'] ?? 0,
+            'model_id' => $this->properties['model_id'] ?? 0,
             'context_key' => $this->properties['context_key'],
         ]);
 
