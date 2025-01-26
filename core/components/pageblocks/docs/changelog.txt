@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.4-pl] - 2025-01-27
+
+### Added
+ - Support php 7.4
+ - TranslitAlias function
+
 ## [1.0.3-pl] - 2024-12-27
 
 ### Fixed

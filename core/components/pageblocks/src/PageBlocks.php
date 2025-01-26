@@ -33,7 +33,7 @@ class PageBlocks
      * The version
      * @var string $version
      */
-    public string $version = '1.0.3-pl';
+    public string $version = '1.0.4-pl';
     public modX $modx;
     public array $config = [];
 
