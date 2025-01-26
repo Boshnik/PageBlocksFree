@@ -1,0 +1,66 @@
+<svg width="95px" height="95px" viewBox="0 0 95 95" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>.a{fill:#fff;stroke:#FF0000;stroke-linecap:round;stroke-linejoin:round;}</style>
+  </defs>
+  
+  <g transform="translate(23,-3)">
+      <g>
+          <g transform="translate(0,25)">
+            <polygon class="a" points="40.86 14.3 23.89 4.5 7.03 14.23 24 24.03 40.86 14.3"/>
+            <polygon class="a" points="24 24.03 7.03 14.23 7.03 33.7 24 43.5 24 24.03"/>
+            <polygon class="a" points="40.86 14.3 24 24.03 24 43.5 40.86 33.77 40.86 14.3"/>
+          </g>
+        
+          <g>
+            <polygon class="a" points="40.86 14.3 23.89 4.5 7.03 14.23 24 24.03 40.86 14.3"/>
+            <polygon class="a" points="24 24.03 7.03 14.23 7.03 33.7 24 43.5 24 24.03"/>
+            <polygon class="a" points="40.86 14.3 24 24.03 24 43.5 40.86 33.77 40.86 14.3"/>
+          </g>
+      </g> 
+       
+      <g transform="translate(22,13)">
+          <g transform="translate(0,25)">
+            <polygon class="a" points="40.86 14.3 23.89 4.5 7.03 14.23 24 24.03 40.86 14.3"/>
+            <polygon class="a" points="24 24.03 7.03 14.23 7.03 33.7 24 43.5 24 24.03"/>
+            <polygon class="a" points="40.86 14.3 24 24.03 24 43.5 40.86 33.77 40.86 14.3"/>
+          </g>
+        
+          <g>
+            <polygon class="a" points="40.86 14.3 23.89 4.5 7.03 14.23 24 24.03 40.86 14.3"/>
+            <polygon class="a" points="24 24.03 7.03 14.23 7.03 33.7 24 43.5 24 24.03"/>
+            <polygon class="a" points="40.86 14.3 24 24.03 24 43.5 40.86 33.77 40.86 14.3"/>
+          </g>
+      </g> 
+  </g> 
+  
+  <g transform="translate(0, 10)">
+      <g>
+          <g transform="translate(0,25)">
+            <polygon class="a" points="40.86 14.3 23.89 4.5 7.03 14.23 24 24.03 40.86 14.3"/>
+            <polygon class="a" points="24 24.03 7.03 14.23 7.03 33.7 24 43.5 24 24.03"/>
+            <polygon class="a" points="40.86 14.3 24 24.03 24 43.5 40.86 33.77 40.86 14.3"/>
+          </g>
+        
+          <g>
+            <polygon class="a" points="40.86 14.3 23.89 4.5 7.03 14.23 24 24.03 40.86 14.3"/>
+            <polygon class="a" points="24 24.03 7.03 14.23 7.03 33.7 24 43.5 24 24.03"/>
+            <polygon class="a" points="40.86 14.3 24 24.03 24 43.5 40.86 33.77 40.86 14.3"/>
+          </g>
+      </g> 
+       
+      <g transform="translate(22,13)">
+          <g transform="translate(0,25)">
+            <polygon class="a" points="40.86 14.3 23.89 4.5 7.03 14.23 24 24.03 40.86 14.3"/>
+            <polygon class="a" points="24 24.03 7.03 14.23 7.03 33.7 24 43.5 24 24.03"/>
+            <polygon class="a" points="40.86 14.3 24 24.03 24 43.5 40.86 33.77 40.86 14.3"/>
+          </g>
+        
+          <g>
+            <polygon class="a" points="40.86 14.3 23.89 4.5 7.03 14.23 24 24.03 40.86 14.3"/>
+            <polygon class="a" points="24 24.03 7.03 14.23 7.03 33.7 24 43.5 24 24.03"/>
+            <polygon class="a" points="40.86 14.3 24 24.03 24 43.5 40.86 33.77 40.86 14.3"/>
+          </g>
+      </g> 
+  </g> 
+
+</svg>
