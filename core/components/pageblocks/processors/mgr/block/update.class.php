@@ -7,10 +7,6 @@ class pbBlockUpdateProcessor extends modObjectUpdateProcessor
     public $languageTopics = ['pageblocks'];
     public $model_type = 'pbBlock';
 
-
-    /**
-     * @return bool
-     */
     public function beforeSet()
     {
         $id = (int) $this->properties['id'];
@@ -29,7 +25,6 @@ class pbBlockUpdateProcessor extends modObjectUpdateProcessor
         if (empty($chunk)) {
             $this->modx->error->addField('chunk', $this->modx->lexicon('pb_chunk_err_name'));
         }
-        $this->properties['old_chunk'] = $this->object->chunk;
 
         if (!empty($this->properties['ab_templates'])) {
             $this->properties['ab_templates'] = implode('||', $this->properties['ab_templates']);
@@ -38,22 +33,13 @@ class pbBlockUpdateProcessor extends modObjectUpdateProcessor
         return parent::beforeSet();
     }
 
-
-    /**
-     * @return bool
-     */
     public function afterSave()
     {
-        if ($this->properties['old_chunk'] !== $this->object->chunk) {
-            $blocks = $this->modx->getCollection(pbBlockValue::class, [
-                'chunk' => $this->properties['old_chunk'],
-                'model_type' => $this->model_type,
-                'model_id' => $this->object->id,
-            ]);
-            foreach ($blocks as $block) {
-                $block->set('chunk', $this->object->chunk);
-                $block->save();
-            }
+        $blocks = $this->object->getMany('Values') ?? [];
+        foreach ($blocks as $block) {
+            $block->set('block_name', $this->object->name);
+            $block->set('chunk', $this->object->chunk);
+            $block->save();
         }
     }
 }

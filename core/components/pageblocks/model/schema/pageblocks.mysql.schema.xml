@@ -28,6 +28,8 @@
                 {"model_type":"pbBlock"}
             ]]></criteria>
         </composite>
+
+        <composite alias="Values" class="pbBlockValue" local="id" foreign="constructor_id" cardinality="many" owner="local"/>
     </object>
 
     <object class="pbFieldTab" table="pb_field_tabs" extends="xPDOSimpleObject">
